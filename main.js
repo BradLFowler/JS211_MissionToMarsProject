@@ -9,13 +9,38 @@ const jobTypes = {
   programmer: 'Any Ship!'
 };
 
-// Your code will go here
+// creates a crewmember who doesn't have a ship until they enter it
+class CrewMember {
+  constructor(name, job, specialSkill, ship) {
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
+  }
+// allows crewmember to go into the ship
+  enterShip = (shipName) => {
+    this.ship = shipName;
+    shipName.crew.push(this);
+  }
+}
 
-
-
-
-
-
+// creates a ship with no crew
+class Ship {
+  constructor(name, type, ability, crew) {
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
+  }
+  missionStatement = () => {
+// if the ship doesn't have a crew they can't go on a mission otherwise return ships ability
+    if (this.crew == 0) {
+      return "Can't perform a mission yet."
+    } else {
+      return this.ability
+    }
+  }
+}
 
 // Begin by reading the tests and building a function that will full each one.
 // As you build, you might not have to build them in order, maybe you do...
